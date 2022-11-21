@@ -17,5 +17,12 @@ namespace WebAPI_Test.Controllers
         public UsersController(IoxDbContext context) => _context = context;
 
 
+        [HttpGet]
+        public IActionResult GetAllUsers()
+        {
+            IList<User> users = null;
+            //string users = "userstring";
+            return Ok(users);
+        }
     }
 }
