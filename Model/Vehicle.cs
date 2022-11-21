@@ -13,7 +13,7 @@ public partial class Vehicle
 
     public string RegistrationPlate { get; set; } = null!;
 
-    public DateTime LicenseExpiry { get; set; }
+    public DateOnly LicenseExpiry { get; set; }
 
     public string Model { get; set; } = null!;
 

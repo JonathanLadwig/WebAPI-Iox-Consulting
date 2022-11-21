@@ -16,18 +16,18 @@ namespace WebAPI_Test.Controllers
         private readonly IoxDbContext _context;
         public VehicleController(IoxDbContext context) => _context = context;
 
-        [HttpGet]
-        public IActionResult Get() {
-            IList<Vehicle> vehicles = _context.Vehicles.ToList();
-            return Ok(vehicles);
-        }
-
         [HttpGet("{vehicleId}")]
         public async Task<IActionResult> GetVehicleList(int vehicleID)
         {
             var query = new GetVehicleListQuery();
             var result = await _mediator.Send(query);
             return Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddVehicle(Commands.AddVehicleCommand command)
+        {
+            return Ok(await Mediator.Send(command));
         }
     }
 }
