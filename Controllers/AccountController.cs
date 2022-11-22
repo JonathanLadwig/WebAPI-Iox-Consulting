@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI_Test.Commands;
 using WebAPI_Test.Model;
 
 namespace WebAPI_Test.Controllers
@@ -14,6 +15,15 @@ namespace WebAPI_Test.Controllers
 
         private readonly IoxDbContext _context;
 
-        public AccountController(IoxDbContext context) => _context = context; 
+        public AccountController(IoxDbContext context) => _context = context;
+
+        [HttpPut("{AccountID}")]
+        public async Task<IActionResult> Deposit(int accountID, DepositCommand command)
+        {
+            if (accountID != command.AccountID) {
+                return BadRequest();
+            }
+            return Ok(await Mediator.Send(command));
+        }
     }
 }

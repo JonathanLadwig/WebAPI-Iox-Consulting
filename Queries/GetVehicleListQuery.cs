@@ -4,9 +4,5 @@ using WebAPI_Test.Model;
 
 namespace WebAPI_Test.Queries
 {
-    public class GetVehicleListQuery : IRequest<List<Vehicle>>
-    {
-        public int Id { get; set; }
-        
-    }
+    public record GetVehicleListQuery(int vehicleID) : IRequest<List<Vehicle>>;
 }

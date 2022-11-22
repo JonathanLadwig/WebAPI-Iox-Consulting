@@ -4,7 +4,7 @@ using WebAPI_Test.Model;
 
 namespace WebAPI_Test.Handlers
 {
-    public class AddVehicleHandler : IRequestHandler<AddVehicleCommand, int>
+    public class AddVehicleHandler : IRequestHandler<AddVehicleCommand, Vehicle>
     {
         private readonly IoxDbContext _context;
         public AddVehicleHandler(IoxDbContext context)
@@ -20,10 +20,16 @@ namespace WebAPI_Test.Handlers
             vehicle.LicenseExpiry = command.LicenseExpiry;
             vehicle.Model= command.Model;
             vehicle.Color= command.Color;
-            vehicle.AccountId = command.AccountID;
+            //TODO: Make new account with balance 0 and return the accountID Value
+            //vehicle.AccountId = command.AccountID;
             _context.Vehicles.Add(vehicle);
             await _context.SaveChangesAsync();
             return vehicle.VehicleId;
+        }
+
+        Task<Vehicle> IRequestHandler<AddVehicleCommand, Vehicle>.Handle(AddVehicleCommand request, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
     }
 }

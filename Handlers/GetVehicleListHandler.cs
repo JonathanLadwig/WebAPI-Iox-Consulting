@@ -14,7 +14,7 @@ namespace WebAPI_Test.Handlers
 
         public async Task<List<Vehicle>> Handle(GetVehicleListQuery query, CancellationToken cancellationToken)
         {
-            List<Vehicle> vehicle = (List<Vehicle>)_context.Vehicles.Where(a => a.VehicleId == query.Id);
+            List<Vehicle> vehicle = (List<Vehicle>)_context.Vehicles.Where(a => a.VehicleId == query.vehicleID);
             if (vehicle == null)
             {
                 return null;

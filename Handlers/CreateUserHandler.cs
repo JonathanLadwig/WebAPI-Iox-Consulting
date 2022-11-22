@@ -5,7 +5,7 @@ using WebAPI_Test.Model;
 
 namespace WebAPI_Test.Handlers
 {
-    public class CreateUserHandler : IRequestHandler<CreateUserCommand, int>
+    public class CreateUserHandler : IRequestHandler<CreateUserCommand, User>
     {
         private readonly IoxDbContext _context;
         public CreateUserHandler(IoxDbContext context)
@@ -20,11 +20,15 @@ namespace WebAPI_Test.Handlers
             user.Idnumber = command.IDNumber;
             user.Password= command.Password;
             user.Email = command.Email; 
-            user.AccountId= command.AccountId;
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return user.UserId;
-            //TODO: Create new account as part of this handler
+            //TODO: Create new account as part of this handler and add the account ID to the statement
+        }
+
+        Task<User> IRequestHandler<CreateUserCommand, User>.Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
     }
 }
