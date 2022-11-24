@@ -37,6 +37,5 @@ public partial class Vehicle
 
     public Vehicle()
     {
-
     }
 }

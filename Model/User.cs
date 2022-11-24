@@ -11,7 +11,7 @@ public partial class User
 
     public string LastName { get; set; } = null!;
 
-    public int Idnumber { get; set; }
+    public string IDNumber { get; set; }
 
     public string Password { get; set; } = null!;
 

@@ -18,7 +18,7 @@ namespace WebAPI_Test.Handlers
             var account = new Account();
             user.FirstName = command.FirstName;
             user.LastName = command.LastName;
-            user.Idnumber = command.IDNumber;
+            user.IDNumber = command.IDNumber;
             user.Password= command.Password;
             user.Email = command.Email; 
             _context.Users.Add(user);
