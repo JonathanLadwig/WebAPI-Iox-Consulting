@@ -11,7 +11,7 @@ namespace WebAPI_Test.Handlers
         {
             _context = context;
         }
-        public async Task<int> Handle(AddVehicleCommand command, CancellationToken cancellationToken)
+        public async Task<Vehicle> Handle(AddVehicleCommand command, CancellationToken cancellationToken)
         {
             var vehicle = new Vehicle();
             vehicle.Vin = command.VIN;
@@ -20,16 +20,10 @@ namespace WebAPI_Test.Handlers
             vehicle.LicenseExpiry = command.LicenseExpiry;
             vehicle.Model = command.Model;
             vehicle.Color = command.Color;
-            //TODO: Make new account with balance 0 and return the accountID Value
-            //vehicle.AccountId = command.AccountID;
+            //vehicle.AccountId = command.AccountID();
             _context.Vehicles.Add(vehicle);
-            await _context.SaveChangesAsync();
-            return vehicle.VehicleId;
-        }
-
-        Task<Vehicle> IRequestHandler<AddVehicleCommand, Vehicle>.Handle(AddVehicleCommand request, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
+            await _context.SaveChangesAsync(); 
+            return vehicle;
         }
     }
 }

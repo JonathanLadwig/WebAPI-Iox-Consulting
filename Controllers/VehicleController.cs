@@ -19,10 +19,10 @@ namespace WebAPI_Test.Controllers
 
         //Get List of Vehicles Based Off Any Attribute. Should also return any vehicles belonging to a user.
         //TODO: Change from vehicleID to VIN, Model, Colour etc
-        [HttpGet("{vehicleId}")]
-        public async Task<IActionResult> GetVehicleList(int vehicleID)
+        [HttpGet("{variable}")]
+        public async Task<IActionResult> GetVehicleList(string variable)
         {
-            var query = new GetVehicleListQuery(vehicleID);
+            var query = new GetVehicleListQuery(variable);
             var result = await _mediator.Send(query);
             return Ok(result);
         }

@@ -11,7 +11,7 @@ namespace WebAPI_Test.Handlers
         {
             _context = context;
         }
-        public async Task<int> Handle(DepositCommand command, CancellationToken cancellationToken) 
+        public async Task<Account> Handle(DepositCommand command, CancellationToken cancellationToken) 
         {
             Account account = _context.Accounts.Where(a => a.AccountId == command.AccountID).FirstOrDefault();
             if (account == null) 
@@ -21,13 +21,8 @@ namespace WebAPI_Test.Handlers
             else
             {
                 account.Balance = command.Balance;
-                return account.AccountId;
+                return account;
             }
-        }
-
-        Task<Account> IRequestHandler<DepositCommand, Account>.Handle(DepositCommand request, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
         }
     }
 }

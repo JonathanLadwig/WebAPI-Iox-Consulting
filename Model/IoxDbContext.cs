@@ -59,7 +59,7 @@ public partial class IoxDbContext : DbContext
             entity.Property(e => e.FirstName)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.Idnumber).HasColumnName("IDNumber");
+            entity.Property(e => e.IDNumber).HasColumnName("IDNumber");
             entity.Property(e => e.LastName)
                 .HasMaxLength(50)
                 .IsUnicode(false);
