@@ -18,7 +18,7 @@ namespace WebAPI_Test.Controllers
         public VehicleController(IoxDbContext context) => _context = context;
 
         //Get List of Vehicles Based Off Any Attribute. Should also return any vehicles belonging to a user.
-        //TODO: Change from vehicleID
+        //TODO: Change from vehicleID to VIN, Model, Colour etc
         [HttpGet("{vehicleId}")]
         public async Task<IActionResult> GetVehicleList(int vehicleID)
         {

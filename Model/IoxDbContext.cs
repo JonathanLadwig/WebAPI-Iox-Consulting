@@ -9,6 +9,11 @@ public partial class IoxDbContext : DbContext
     public IoxDbContext()
     {
     }
+    //new line added
+    public async Task<int> SaveChanges()
+    {
+        return await base.SaveChangesAsync();
+    }
 
     public IoxDbContext(DbContextOptions<IoxDbContext> options)
         : base(options)

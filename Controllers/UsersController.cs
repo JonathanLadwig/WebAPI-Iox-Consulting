@@ -16,14 +16,7 @@ namespace WebAPI_Test.Controllers
 
         public UsersController(IoxDbContext context) => _context = context;
 
-        [HttpGet]
-        public IActionResult GetAllUsers()
-        {
-            IList<User> users = null;
-            //string users = "userstring";
-            return Ok(users);
-        }
-
+        //Creates a new user with the details sent
         [HttpPost]  
         public async Task<IActionResult> CreateUser(Commands.CreateUserCommand command) 
         {

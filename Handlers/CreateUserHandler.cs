@@ -12,9 +12,10 @@ namespace WebAPI_Test.Handlers
         {
             _context = context; 
         }
-        public async Task<int> Handle(CreateUserCommand command, CancellationToken cancellationToken) 
+        public async Task<User> Handle(CreateUserCommand command, CancellationToken cancellationToken) 
         {
             var user = new User();
+            var account = new Account();
             user.FirstName = command.FirstName;
             user.LastName = command.LastName;
             user.Idnumber = command.IDNumber;
@@ -22,13 +23,8 @@ namespace WebAPI_Test.Handlers
             user.Email = command.Email; 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
-            return user.UserId;
+            return user;
             //TODO: Create new account as part of this handler and add the account ID to the statement
-        }
-
-        Task<User> IRequestHandler<CreateUserCommand, User>.Handle(CreateUserCommand request, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
         }
     }
 }

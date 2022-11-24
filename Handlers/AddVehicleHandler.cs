@@ -18,8 +18,8 @@ namespace WebAPI_Test.Handlers
             vehicle.LicenseNumber = command.LicenseNumber;
             vehicle.RegistrationPlate = command.RegistrationPlate;
             vehicle.LicenseExpiry = command.LicenseExpiry;
-            vehicle.Model= command.Model;
-            vehicle.Color= command.Color;
+            vehicle.Model = command.Model;
+            vehicle.Color = command.Color;
             //TODO: Make new account with balance 0 and return the accountID Value
             //vehicle.AccountId = command.AccountID;
             _context.Vehicles.Add(vehicle);

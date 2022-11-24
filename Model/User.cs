@@ -19,7 +19,7 @@ public partial class User
 
     public int AccountId { get; set; }
 
-    public virtual Account Account { get; set; } // = null!;
+    public virtual Account Account { get; set; }// = null!;
 
     public virtual ICollection<Account> Accounts { get; } = new List<Account>();
 }
