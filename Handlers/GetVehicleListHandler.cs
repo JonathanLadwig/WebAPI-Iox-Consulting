@@ -15,12 +15,7 @@ namespace WebAPI_Test.Handlers
         public async Task<List<Vehicle>> Handle(GetVehicleListQuery query, CancellationToken cancellationToken)
         {
             //Should be a paged list
-            List<Vehicle> vehicle = (List<Vehicle>)_context.Vehicles.Where(a => a.Vin == query.variable);
-            if (vehicle == null)
-            {
-                return null;
-            }
-
+            PagedList
             return vehicle; 
         }
     }

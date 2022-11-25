@@ -21,7 +21,7 @@ public partial class Vehicle
 
     public int AccountId { get; set; }
 
-    public virtual Account Account { get; set; } = null!;
+   // public virtual Account Account { get; set; } = null!;
 
     public Vehicle(int vehicleId, string vin, string licenseNumber, string registrationPlate, DateOnly licenseExpiry, string model, string color, int accountId)
     {
@@ -35,7 +35,7 @@ public partial class Vehicle
         AccountId = accountId;
     }
 
-    public Vehicle()
-    {
-    }
+    //public Vehicle()
+    //{
+    //}
 }

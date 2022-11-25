@@ -19,7 +19,20 @@ public partial class User
 
     public int AccountId { get; set; }
 
-    public virtual Account Account { get; set; }// = null!;
+    public User(int userId, string firstName, string lastName, string iDNumber, string password, string email, int accountId)
+    {
+        UserId = userId;
+        FirstName = firstName;
+        LastName = lastName;
+        IDNumber = iDNumber;
+        Password = password;
+        Email = email;
+        AccountId = accountId;
+    }
 
-    public virtual ICollection<Account> Accounts { get; } = new List<Account>();
+
+
+    //public virtual Account Account { get; set; }// = null!;
+
+    //public virtual ICollection<Account> Accounts { get; } = new List<Account>();
 }

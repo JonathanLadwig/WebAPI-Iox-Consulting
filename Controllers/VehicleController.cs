@@ -14,8 +14,8 @@ namespace WebAPI_Test.Controllers
         private IMediator _mediator;
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
-        private readonly IoxDbContext _context;
-        public VehicleController(IoxDbContext context) => _context = context;
+        private readonly IoxDataAccess _context; //IoxDbContext
+        public VehicleController(IoxDataAccess context) => _context = context;
 
         //Get List of Vehicles Based Off Any Attribute. Should also return any vehicles belonging to a user.
         //TODO: Change from vehicleID to VIN, Model, Colour etc

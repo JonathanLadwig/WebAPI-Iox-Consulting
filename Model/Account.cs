@@ -11,9 +11,16 @@ public partial class Account
 
     public int UserId { get; set; }
 
-    public virtual User User { get; set; } = null!;
+    public Account(int accountId, decimal balance, int userId)
+    {
+        AccountId = accountId;
+        Balance = balance;
+        UserId = userId;
+    }
 
-    public virtual ICollection<User> Users { get; } = new List<User>();
+    //public virtual User User { get; set; } = null!;
 
-    public virtual ICollection<Vehicle> Vehicles { get; } = new List<Vehicle>();
+    //public virtual ICollection<User> Users { get; } = new List<User>();
+
+    //public virtual ICollection<Vehicle> Vehicles { get; } = new List<Vehicle>();
 }
