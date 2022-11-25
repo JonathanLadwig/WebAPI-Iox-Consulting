@@ -3,5 +3,5 @@ using WebAPI_Test.Model;
 
 namespace WebAPI_Test.Commands
 {
-    public record DepositCommand(int AccountID, decimal Balance, int UserID) : IRequest<Account>;
+    public record DepositCommand(int AccountID, decimal Balance) : IRequest<Account>;
 }
