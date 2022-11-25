@@ -14,7 +14,7 @@ builder.Services.AddDbContext<IoxDbContext>(
     o => o.UseSqlServer());
 //Mediator
 //builder.Services.AddSingleton<IoxDbContext>();
-//builder.Services.AddMediatR(typeof(IoxDbContext).Assembly);  
+builder.Services.AddMediatR(typeof(IoxDbContext).Assembly);  
 
 var app = builder.Build();
 

@@ -13,7 +13,7 @@ public partial class Vehicle
 
     public string RegistrationPlate { get; set; } = null!;
 
-    public DateOnly LicenseExpiry { get; set; }
+    public DateTime LicenseExpiry { get; set; }
 
     public string Model { get; set; } = null!;
 
@@ -21,9 +21,9 @@ public partial class Vehicle
 
     public int AccountId { get; set; }
 
-    public virtual Account Account { get; set; } = null!;
+    //public virtual Account Account { get; set; } = null!;
 
-    public Vehicle(int vehicleId, string vin, string licenseNumber, string registrationPlate, DateOnly licenseExpiry, string model, string color, int accountId)
+    public Vehicle(int vehicleId, string vin, string licenseNumber, string registrationPlate, DateTime licenseExpiry, string model, string color, int accountId)
     {
         VehicleId = vehicleId;
         Vin = vin;

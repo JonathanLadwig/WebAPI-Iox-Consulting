@@ -14,7 +14,13 @@ namespace WebAPI_Test.Controllers
     {
         private IMediator _mediator;
 
+        public VehicleController(IMediator mediator)
+        {
+            _mediator= mediator;    
+        }
+
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
+
 
         //Get List of Vehicles Based Off Any Attribute. Should also return any vehicles belonging to a user.
         [HttpGet("{filter}")]
