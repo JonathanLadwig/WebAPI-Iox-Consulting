@@ -20,7 +20,7 @@ namespace WebAPI_Test.Handlers
             vehicle.LicenseExpiry = command.LicenseExpiry;
             vehicle.Model = command.Model;
             vehicle.Color = command.Color;
-            //vehicle.AccountId = command.AccountID();
+            vehicle.AccountId = command.AccountID;
             _context.Vehicles.Add(vehicle);
             await _context.SaveChangesAsync(); 
             return vehicle;

@@ -14,15 +14,8 @@ namespace WebAPI_Test.Handlers
         public async Task<Account> Handle(DepositCommand command, CancellationToken cancellationToken) 
         {
             Account account = _context.Accounts.Where(a => a.AccountId == command.AccountID).FirstOrDefault();
-            if (account == null) 
-            {
-                return default;
-            }
-            else
-            {
-                account.Balance = command.Balance;
-                return account;
-            }
+            account.Balance = command.Balance;
+            return account;
         }
     }
 }

@@ -15,13 +15,9 @@ namespace WebAPI_Test.Handlers
         public async Task<Vehicle> Handle(RenewLicenseCommand command, CancellationToken cancellationToken)
         {
             Vehicle vehicle = _context.Vehicles.Where(a => a.VehicleId == command.VehicleID).FirstOrDefault();
-            if (vehicle == null) 
-            {
-                return null;
-            }
             Account account = _context.Accounts.Where(a => a.AccountId == vehicle.AccountId).FirstOrDefault();   
             if (account.Balance <= 1000) {
-                //return error
+                //return an informative error
                 return null;
             }
             vehicle.LicenseExpiry = command.LicenseExpiry.AddYears(1);  
