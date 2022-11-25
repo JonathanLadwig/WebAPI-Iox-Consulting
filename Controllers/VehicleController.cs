@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PagedList;
 using WebAPI_Test.Commands;
 using WebAPI_Test.Model;
 using WebAPI_Test.Queries;
@@ -12,17 +13,15 @@ namespace WebAPI_Test.Controllers
     public class VehicleController : ControllerBase
     {
         private IMediator _mediator;
-        protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
-        private readonly IoxDbContext _context;
-        public VehicleController(IoxDbContext context) => _context = context;
+        protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
         //Get List of Vehicles Based Off Any Attribute. Should also return any vehicles belonging to a user.
         [HttpGet("{filter}")]
         public async Task<IActionResult> GetVehicleList(string filter)
         {
             var query = new GetVehicleListQuery(filter);
-            var result = await _mediator.Send(query);
+            var result = await Mediator.Send(query);
             return Ok(result);
         }
 
@@ -41,7 +40,12 @@ namespace WebAPI_Test.Controllers
             {
                 return BadRequest();
             }
-            return Ok(await Mediator.Send(command));
+            var result = await Mediator.Send(command);
+            if (result == null)
+            {
+                return BadRequest();  
+            }
+            return Ok(result);
         }
     }
 }

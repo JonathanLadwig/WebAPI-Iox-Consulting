@@ -12,10 +12,6 @@ namespace WebAPI_Test.Controllers
         private IMediator _mediator;
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
-        private readonly IoxDbContext _context;
-
-        public UsersController(IoxDbContext context) => _context = context;
-
         //Creates a new user with the details sent
         [HttpPost]  
         public async Task<IActionResult> CreateUser(Commands.CreateUserCommand command) 

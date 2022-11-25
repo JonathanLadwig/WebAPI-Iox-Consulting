@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using WebAPI_Test.Commands;
 using WebAPI_Test.Model;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -14,14 +15,18 @@ namespace WebAPI_Test.Handlers
         }
         public async Task<Vehicle> Handle(RenewLicenseCommand command, CancellationToken cancellationToken)
         {
-            Vehicle vehicle = _context.Vehicles.Where(a => a.VehicleId == command.VehicleID).FirstOrDefault();
-            Account account = _context.Accounts.Where(a => a.AccountId == vehicle.AccountId).FirstOrDefault();   
-            if (account.Balance <= 1000) {
-                //return an informative error
+            var vehicle = _context.Vehicles.Where(a => a.VehicleId == command.VehicleID).FirstOrDefault();
+            Account account = _context.Accounts.Where(a => a.AccountId == vehicle.AccountId).FirstOrDefault();
+            if (account.Balance <= 1000)
+            {
+                //return informative error
                 return null;
             }
-            vehicle.LicenseExpiry = command.LicenseExpiry.AddYears(1);  
-            return vehicle;
+            else
+            {
+                vehicle.LicenseExpiry = command.LicenseExpiry.AddYears(1);
+                return vehicle;
+            }
         }
     }
 }

@@ -15,7 +15,6 @@ namespace WebAPI_Test.Handlers
         {
             Account account = _context.Accounts.Where(a => a.AccountId == command.AccountID).FirstOrDefault();
             account.Balance = command.Balance;
-            //maybe return just a deicmal/money value rather than a full account?
             await _context.SaveChangesAsync();  
             return account;
         }

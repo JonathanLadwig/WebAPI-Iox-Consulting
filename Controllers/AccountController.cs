@@ -13,10 +13,6 @@ namespace WebAPI_Test.Controllers
         private IMediator _mediator;
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
-        private readonly IoxDbContext _context;
-
-        public AccountController(IoxDbContext context) => _context = context;
-
         //Deposit: increase the balance by the amount passed in
         [HttpPut("{AccountID}")]
         public async Task<IActionResult> Deposit(int accountID, DepositCommand command)
