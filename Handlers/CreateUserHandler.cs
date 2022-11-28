@@ -21,10 +21,10 @@ namespace WebAPI_Test.Handlers
             user.IDNumber = command.IDNumber;
             user.Password= command.Password;
             user.Email = command.Email;
-            user.AccountId = account.AccountId;
+            user.AccountId = account.AccountId; 
             account.Balance = 0;
             account.UserId = user.UserId;
-            //Need to create a new account get that account id to finish making the user, then get the user id to fonosh making account.
+            //Need to create a new account get that account id to finish making the user, then get the user id to finish making account.
             _context.Users.Add(user); 
             _context.Accounts.Add(account); 
             await _context.SaveChanges(); 

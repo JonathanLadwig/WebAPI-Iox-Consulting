@@ -23,8 +23,4 @@ public partial class Vehicle
     public int AccountId { get; set; }
 
     public virtual Account Account { get; set; } = null!;
-
-    public Vehicle()
-    {
-    }
 }

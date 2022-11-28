@@ -39,18 +39,15 @@ namespace WebAPI_Test.Controllers
         }
 
         //Renew Vehicle License
-        [HttpPut("{vehicleId}")]
-        public async Task<IActionResult> RenewLicense(int vehicleID, RenewLicenseCommand command)
+        [HttpPut("{vehicleID}")]
+        public async Task<IActionResult> RenewLicense(int vehicleID)
         {
-            if (vehicleID != command.VehicleID) 
-            {
-                return BadRequest();
-            }
+            var command = new RenewLicenseCommand(vehicleID);
             var result = await Mediator.Send(command);
-            if (result == null)
-            {
-                return BadRequest();  
-            }
+            //if (result == null)
+            //{
+            //    return BadRequest();  
+            //}
             return Ok(result);
         }
     }

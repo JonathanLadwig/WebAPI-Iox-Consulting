@@ -14,7 +14,7 @@ namespace WebAPI_Test.Controllers
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
 
         //Deposit: increase the balance by the amount passed in
-        [HttpPut("{AccountID}")]
+        [HttpPut("{accountID}")]
         public async Task<IActionResult> Deposit(int accountID, decimal balance)
         {
             var command = new DepositCommand(accountID, balance);

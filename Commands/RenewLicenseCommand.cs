@@ -3,5 +3,5 @@ using WebAPI_Test.Model;
 
 namespace WebAPI_Test.Commands
 {
-    public record RenewLicenseCommand(int VehicleID) : IRequest<Vehicle>;
+    public record RenewLicenseCommand(int VehicleID) : IRequest<string>;
 }
