@@ -5,11 +5,11 @@ namespace WebAPI_Test.Model;
 
 public partial class Account
 {
-    public int AccountId { get; set; }
+    public int AccountId { get; set; } //Primary Key
 
     public decimal Balance { get; set; }
 
-    public int UserId { get; set; }
+    public int UserId { get; set; } //Foreign Key
 
     public virtual User User { get; set; } = null!;
 

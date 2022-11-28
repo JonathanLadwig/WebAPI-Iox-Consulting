@@ -14,21 +14,20 @@ namespace WebAPI_Test.Handlers
         }
         public async Task<User> Handle(CreateUserCommand command, CancellationToken cancellationToken) 
         {
-            var user = new User();
+            User user = new User();
+            Account account = new Account();
             user.FirstName = command.FirstName;
             user.LastName = command.LastName;
             user.IDNumber = command.IDNumber;
             user.Password= command.Password;
             user.Email = command.Email;
-            user.AccountId = command.AccountID;
-            _context.Users.Add(user);
-            //make new account with the same id number as user id (This is probably bad practice in an actual db, but since its a one and only one relationship, I'm gonna say its fine)
-            var account = new Account();
-            account.AccountId = user.AccountId;
+            user.AccountId = account.AccountId;
             account.Balance = 0;
-            account.UserId = user.AccountId;
-            _context.Accounts.Add(account);
-            await _context.SaveChangesAsync();
+            account.UserId = user.UserId;
+            //Need to create a new account get that account id to finish making the user, then get the user id to fonosh making account.
+            _context.Users.Add(user); 
+            _context.Accounts.Add(account); 
+            await _context.SaveChanges(); 
             return user;
         }
     }

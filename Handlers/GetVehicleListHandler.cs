@@ -15,8 +15,16 @@ namespace WebAPI_Test.Handlers
 
         public async Task<PagedList<Vehicle>> Handle(GetVehicleListQuery query, CancellationToken cancellationToken)
         {
-            var vehicle = _context.Vehicles.Where(a => a.Vin.Contains(query.varstring) || a.LicenseNumber.Contains(query.varstring) || a.Model.Contains(query.varstring) || a.Color == query.varstring || a.RegistrationPlate.Contains(query.varstring));
-            IPagedList<Vehicle> vehicles = vehicle.ToPagedList<Vehicle>(1,5);
+            int userID;
+            if (Int32.TryParse(query.varstring, out userID))
+            {
+
+            }
+            else{
+                userID = -1;
+            }
+            IPagedList<Vehicle> vehicles = _context.Vehicles.Where(a => a.Vin.Contains(query.varstring) || a.LicenseNumber.Contains(query.varstring) || a.Model.Contains(query.varstring) || a.Color == query.varstring || a.RegistrationPlate.Contains(query.varstring) || a.AccountId == userID).ToPagedList<Vehicle>(1, 10);
+            //IPagedList<Vehicle> vehicles = vehicle.ToPagedList<Vehicle>(5,5);
             return (PagedList<Vehicle>)vehicles; 
         }
     }

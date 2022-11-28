@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MessagePack;
+using System;
 using System.Collections.Generic;
 
 namespace WebAPI_Test.Model;
@@ -21,19 +22,7 @@ public partial class Vehicle
 
     public int AccountId { get; set; }
 
-    //public virtual Account Account { get; set; } = null!;
-
-    public Vehicle(int vehicleId, string vin, string licenseNumber, string registrationPlate, DateTime licenseExpiry, string model, string color, int accountId)
-    {
-        VehicleId = vehicleId;
-        Vin = vin;
-        LicenseNumber = licenseNumber;
-        RegistrationPlate = registrationPlate;
-        LicenseExpiry = licenseExpiry;
-        Model = model;
-        Color = color;
-        AccountId = accountId;
-    }
+    public virtual Account Account { get; set; } = null!;
 
     public Vehicle()
     {

@@ -15,8 +15,9 @@ namespace WebAPI_Test.Controllers
 
         //Deposit: increase the balance by the amount passed in
         [HttpPut("{AccountID}")]
-        public async Task<IActionResult> Deposit(int accountID, DepositCommand command)
+        public async Task<IActionResult> Deposit(int accountID, decimal balance)
         {
+            var command = new DepositCommand(accountID, balance);
             if (accountID != command.AccountID) {
                 return BadRequest();
             }

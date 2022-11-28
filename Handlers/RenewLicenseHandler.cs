@@ -19,12 +19,12 @@ namespace WebAPI_Test.Handlers
             Account account = _context.Accounts.Where(a => a.AccountId == vehicle.AccountId).FirstOrDefault();
             if (account.Balance <= 1000)
             {
-                //return informative error
+                //null gets converted into an informative error
                 return null;
             }
             else
             {
-                vehicle.LicenseExpiry = command.LicenseExpiry.AddYears(1);
+                vehicle.LicenseExpiry.AddYears(1);
                 return vehicle;
             }
         }
